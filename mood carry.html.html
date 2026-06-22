@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mood Carry — Bawa Perasaanmu Kemana Pun Pergi</title>
+<meta name="description" content="Gantungan kunci unik yang berubah jadi totebag, lengkap dengan QR code motivasi & refleksi di dalamnya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#16100c;
+  --cream:#faf7f1;
+  --warm:#f3ede0;
+  --warm2:#ebe3d0;
+  --clay:#c06840;
+  --clay2:#d98054;
+  --clay-pale:#faeee5;
+  --clay-border:#e8c4aa;
+  --violet:#4a3fa8;
+  --violet-pale:#eeedfc;
+  --sage:#2d6e50;
+  --sage-pale:#e3f3eb;
+  --rose:#a83055;
+  --rose-pale:#fbe8ef;
+  --slate:#3d5a6e;
+  --slate-pale:#e6eef4;
+  --sand:#8f7d5e;
+  --sand-pale:#f5f0e6;
+  --muted:#8c7e70;
+  --light-muted:#c4b8a8;
+  --border:rgba(22,16,12,0.1);
+  --border2:rgba(22,16,12,0.18);
+  --font-d:'Cormorant Garamond',Georgia,serif;
+  --font-b:'DM Sans',system-ui,sans-serif;
+  --r:20px;
+  --r-sm:12px;
+  --shadow:0 1px 3px rgba(22,16,12,0.06),0 4px 16px rgba(22,16,12,0.06);
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--font-b);font-weight:300;line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+button{cursor:pointer;font-family:var(--font-b)}
+
+/* ─ ANNOUNCEMENT BAR ─ */
+.ann{background:var(--ink);color:rgba(250,247,241,0.7);text-align:center;padding:0.55rem 1rem;font-size:0.72rem;letter-spacing:0.08em}
+.ann b{color:var(--clay2)}
+
+/* ─ NAV ─ */
+.nav{position:sticky;top:0;z-index:300;background:rgba(250,247,241,0.92);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:62px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-size:1.25rem;font-weight:700;letter-spacing:0.01em}
+.nav-logo-icon{width:30px;height:30px;background:var(--clay);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.nav-logo-icon svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-links{display:flex;align-items:center;gap:2.2rem}
+.nav-links a{font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);transition:color 0.2s}
+.nav-links a:hover{color:var(--clay)}
+.nav-actions{display:flex;align-items:center;gap:0.75rem}
+.nav-btn{background:var(--ink);color:var(--cream);padding:0.5rem 1.3rem;border-radius:100px;font-size:0.78rem;font-weight:500;border:none;transition:background 0.2s;letter-spacing:0.04em}
+.nav-btn:hover{background:var(--clay)}
+.nav-cart{position:relative;width:38px;height:38px;background:none;border:0.5px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all 0.2s;color:var(--ink)}
+.nav-cart:hover{border-color:var(--clay);color:var(--clay)}
+.cart-count{position:absolute;top:-3px;right:-3px;background:var(--clay);color:white;width:16px;height:16px;border-radius:50%;font-size:0.6rem;display:flex;align-items:center;justify-content:center;font-weight:600}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--ink);transition:all 0.3s;display:block}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:400;background:var(--cream);flex-direction:column;padding:2rem;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-menu-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:3rem}
+.mobile-menu a{font-family:var(--font-d);font-size:2rem;font-weight:600;color:var(--ink);padding:0.5rem 0;border-bottom:0.5px solid var(--border);display:block}
+
+/* ─ HERO ─ */
+.hero{min-height:calc(100vh - 100px);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:5rem 2.5rem 4rem;max-width:1200px;margin:0 auto}
+.hero-text{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--clay);font-weight:500;margin-bottom:1.5rem}
+.eyebrow-line{width:28px;height:1px;background:var(--clay)}
+.hero-h1{font-family:var(--font-d);font-size:clamp(3.5rem,5.5vw,6rem);font-weight:700;line-height:1.02;color:var(--ink);margin-bottom:1.5rem}
+.hero-h1 em{font-style:italic;color:var(--clay)}
+.hero-p{font-size:1rem;color:var(--muted);line-height:1.75;margin-bottom:2.5rem;max-width:420px}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);padding:0.9rem 2rem;border-radius:100px;font-size:0.85rem;font-weight:500;border:1.5px solid var(--ink);transition:all 0.25s}
+.btn-primary:hover{background:var(--clay);border-color:var(--clay);transform:translateY(-2px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--ink);padding:0.9rem 2rem;border-radius:100px;font-size:0.85rem;font-weight:400;border:1.5px solid var(--border2);transition:all 0.25s}
+.btn-secondary:hover{border-color:var(--ink);transform:translateY(-2px)}
+.hero-social-proof{display:flex;align-items:center;gap:1rem}
+.sp-avatars{display:flex}
+.sp-avatar{width:32px;height:32px;border-radius:50%;border:2px solid var(--cream);margin-left:-8px;font-size:0.75rem;display:flex;align-items:center;justify-content:center;font-weight:500}
+.sp-avatar:first-child{margin-left:0}
+.sp-text{font-size:0.78rem;color:var(--muted)}
+.sp-text b{color:var(--ink);font-weight:500}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-bag-wrap{position:relative;background:var(--warm);border-radius:28px;padding:3rem;display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:1}
+.hero-badge-float{position:absolute;top:1.5rem;right:1.5rem;background:white;border:0.5px solid var(--border);border-radius:100px;padding:0.45rem 0.9rem;font-size:0.72rem;font-weight:500;color:var(--ink);box-shadow:var(--shadow)}
+.hero-badge-scan{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--ink);color:var(--cream);border-radius:100px;padding:0.45rem 0.9rem;font-size:0.72rem;font-weight:500;display:flex;align-items:center;gap:6px}
+.scan-dot{width:7px;height:7px;background:var(--clay2);border-radius:50%;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:0.5}}
+
+/* ─ TICKER ─ */
+.ticker{background:var(--clay);color:white;padding:0.7rem 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;gap:3rem;animation:ticker 20s linear infinite}
+.ticker-inner span{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:400;opacity:0.85}
+.ticker-inner span b{opacity:1;font-weight:600}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─ SECTION HELPERS ─ */
+.section{padding:6rem 2.5rem;max-width:1200px;margin:0 auto}
+.sec-eye{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:0.6rem;display:flex;align-items:center;gap:10px}
+.sec-eye::before{content:'';width:20px;height:1px;background:var(--muted)}
+.sec-h{font-family:var(--font-d);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;line-height:1.1;color:var(--ink);margin-bottom:0.8rem}
+.sec-h em{font-style:italic;color:var(--clay)}
+.sec-lead{font-size:0.95rem;color:var(--muted);max-width:480px;line-height:1.75;margin-bottom:3rem}
+.divider{height:0.5px;background:var(--border);max-width:1200px;margin:0 auto}
+.full-divider{height:0.5px;background:var(--border)}
+
+/* ─ PRODUCTS ─ */
+.products-bg{background:var(--warm)}
+.products-inner{padding:6rem 2.5rem;max-width:1200px;margin:0 auto}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.product-card{background:white;border:0.5px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all 0.3s;position:relative}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(22,16,12,0.1)}
+.product-badge{position:absolute;top:1rem;left:1rem;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;padding:0.3rem 0.7rem;border-radius:100px;z-index:1}
+.badge-new{background:var(--ink);color:var(--cream)}
+.badge-hot{background:var(--clay);color:white}
+.badge-ltd{background:var(--violet);color:white}
+.badge-sold{background:var(--muted);color:white}
+.product-img{height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-info{padding:1.25rem}
+.product-name{font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:0.2rem}
+.product-variant{font-size:0.75rem;color:var(--muted);margin-bottom:0.8rem}
+.product-footer{display:flex;align-items:center;justify-content:space-between}
+.product-price{font-size:1rem;font-weight:500;color:var(--ink)}
+.product-price-old{font-size:0.78rem;color:var(--light-muted);text-decoration:line-through;margin-right:4px}
+.product-add{width:34px;height:34px;background:var(--ink);color:white;border:none;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.product-add:hover{background:var(--clay)}
+.product-colors{display:flex;gap:5px;margin-bottom:0.8rem}
+.pcolor{width:16px;height:16px;border-radius:50%;border:1.5px solid white;box-shadow:0 0 0 1px rgba(22,16,12,0.2);cursor:pointer;transition:transform 0.2s}
+.pcolor:hover,.pcolor.active{transform:scale(1.25)}
+.product-stars{font-size:0.72rem;color:var(--clay);margin-bottom:0.3rem}
+
+/* ─ MOOD SECTION ─ */
+.mood-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.mood-tab{background:none;border:0.5px solid var(--border);border-radius:100px;padding:0.5rem 1.3rem;font-size:0.8rem;color:var(--muted);transition:all 0.2s;font-family:var(--font-b);display:flex;align-items:center;gap:6px}
+.mood-tab.active,.mood-tab:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.mood-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.mood-card{background:white;border:0.5px solid var(--border);border-radius:var(--r);padding:2rem 1.75rem;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden}
+.mood-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(22,16,12,0.09)}
+.mood-card-line{height:2.5px;position:absolute;top:0;left:0;right:0;border-radius:var(--r) var(--r) 0 0}
+.mood-icon-wrap{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.1rem;margin-top:0.4rem}
+.mood-chip{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;margin-bottom:0.7rem;display:block}
+.mood-q{font-family:var(--font-d);font-size:1.15rem;font-style:italic;line-height:1.55;color:var(--ink);margin-bottom:0.8rem}
+.mood-sub{font-size:0.78rem;color:var(--muted)}
+.mood-card:hover .mood-go{transform:translate(3px,-3px);opacity:1}
+.mood-go{position:absolute;bottom:1.5rem;right:1.5rem;font-size:1rem;color:var(--clay);opacity:0;transition:all 0.3s}
+.tab-content{display:none;animation:fadeUp 0.35s ease}
+.tab-content.show{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─ AI CHAT ─ */
+.ai-section{background:var(--warm);padding:6rem 2.5rem}
+.ai-wrap{max-width:900px;margin:0 auto}
+.ai-card{background:white;border:0.5px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+.ai-topbar{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:0.5px solid var(--border);background:var(--cream);flex-wrap:wrap;gap:0.5rem}
+.ai-topbar-left{display:flex;align-items:center;gap:10px}
+.ai-avatar{width:34px;height:34px;background:var(--clay-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.ai-name{font-size:0.88rem;font-weight:500;color:var(--ink)}
+.ai-online{font-size:0.68rem;color:var(--sage);display:flex;align-items:center;gap:4px}
+.ai-online::before{content:'';width:6px;height:6px;background:var(--sage);border-radius:50%}
+.ai-topbar-right{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap}
+.ai-badge{font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.28rem 0.7rem;border-radius:100px;font-weight:600}
+.ai-badge.web{background:var(--slate-pale);color:var(--slate)}
+.ai-badge.gpt{background:#e8f5e9;color:#2e7d32}
+.ai-badge.claude{background:var(--clay-pale);color:var(--clay)}
+/* model switcher */
+.model-switch{display:flex;background:var(--warm);border-radius:100px;padding:3px;gap:2px;border:0.5px solid var(--border)}
+.model-btn{padding:0.3rem 0.85rem;border-radius:100px;border:none;background:transparent;font-size:0.72rem;font-weight:500;font-family:var(--font-b);color:var(--muted);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.model-btn.active{background:white;color:var(--ink);box-shadow:0 1px 4px rgba(22,16,12,0.1)}
+.model-btn .model-dot{width:7px;height:7px;border-radius:50%}
+.model-btn.active.gpt .model-dot{background:#10a37f}
+.model-btn.active.claude .model-dot{background:var(--clay)}
+/* settings btn */
+.settings-btn{width:32px;height:32px;background:none;border:0.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:var(--muted);transition:all 0.2s}
+.settings-btn:hover{border-color:var(--clay);color:var(--clay);background:var(--clay-pale)}
+/* setup banner */
+.ai-setup-banner{background:linear-gradient(135deg,#e8f5e9,#f0fdf4);border-bottom:0.5px solid #c8e6c9;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.ai-setup-banner.hidden{display:none}
+.setup-text{font-size:0.82rem;color:#2e7d32;line-height:1.5}
+.setup-text b{font-weight:600}
+.setup-key-btn{background:#10a37f;color:white;border:none;border-radius:100px;padding:0.45rem 1.1rem;font-size:0.78rem;font-weight:500;font-family:var(--font-b);cursor:pointer;white-space:nowrap;transition:background 0.2s}
+.setup-key-btn:hover{background:#0d8a6e}
+/* messages */
+.ai-messages{height:360px;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem}
+.ai-messages::-webkit-scrollbar{width:4px}
+.ai-messages::-webkit-scrollbar-track{background:transparent}
+.ai-messages::-webkit-scrollbar-thumb{background:var(--warm2);border-radius:2px}
+.msg{max-width:82%;animation:msgIn 0.3s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.msg.bot{align-self:flex-start}
+.msg.user{align-self:flex-end}
+.msg-bubble{padding:0.85rem 1.15rem;border-radius:16px;font-size:0.88rem;line-height:1.65;white-space:pre-wrap;word-break:break-word}
+.msg.bot .msg-bubble{background:var(--cream);border:0.5px solid var(--border);color:var(--ink);border-radius:4px 16px 16px 16px}
+.msg.user .msg-bubble{background:var(--ink);color:var(--cream);border-radius:16px 4px 16px 16px}
+.msg-meta{font-size:0.67rem;color:var(--muted);margin-top:4px;padding:0 4px;display:flex;align-items:center;gap:6px}
+.msg.user .msg-meta{justify-content:flex-end}
+.msg-model-tag{font-size:0.6rem;padding:1px 6px;border-radius:4px;font-weight:600;letter-spacing:0.06em}
+.msg-model-tag.gpt{background:#e8f5e9;color:#2e7d32}
+.msg-model-tag.claude{background:var(--clay-pale);color:var(--clay)}
+/* typing + status */
+.typing-indicator{display:none;align-self:flex-start}
+.typing-indicator.show{display:flex}
+.typing-bubble{background:var(--cream);border:0.5px solid var(--border);border-radius:4px 16px 16px 16px;padding:0.85rem 1.15rem;display:flex;gap:4px;align-items:center}
+.typing-dot{width:6px;height:6px;background:var(--muted);border-radius:50%;animation:bounce 1.2s infinite}
+.typing-dot:nth-child(2){animation-delay:0.15s}
+.typing-dot:nth-child(3){animation-delay:0.3s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.ai-status-bar{display:none;padding:0.55rem 1.5rem;font-size:0.75rem;align-items:center;gap:8px;border-top:0.5px solid var(--border)}
+.ai-status-bar.show{display:flex}
+.ai-status-bar.searching{background:#e8f5e9;color:#2e7d32}
+.ai-status-bar.thinking{background:var(--clay-pale);color:var(--clay)}
+.spin{width:12px;height:12px;border:1.5px solid currentColor;border-top-color:transparent;border-radius:50%;animation:spin 0.8s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* chips */
+.ai-quick-chips{padding:0.7rem 1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;border-top:0.5px solid var(--border)}
+.qchip{background:none;border:0.5px solid var(--border);border-radius:100px;padding:0.32rem 0.85rem;font-size:0.74rem;color:var(--muted);transition:all 0.2s;font-family:var(--font-b);white-space:nowrap}
+.qchip:hover{border-color:var(--clay);color:var(--clay);background:var(--clay-pale)}
+/* input row */
+.ai-inputrow{display:flex;gap:0.75rem;padding:1rem 1.5rem;border-top:0.5px solid var(--border);align-items:flex-end}
+.ai-textarea{flex:1;border:0.5px solid var(--border);border-radius:var(--r-sm);padding:0.8rem 1rem;font-size:0.88rem;font-family:var(--font-b);resize:none;min-height:46px;max-height:120px;outline:none;transition:border-color 0.2s;color:var(--ink);background:var(--cream);line-height:1.5}
+.ai-textarea:focus{border-color:var(--clay)}
+.ai-send-btn{width:42px;height:42px;flex-shrink:0;background:var(--ink);color:white;border:none;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.ai-send-btn:hover{background:var(--clay)}
+.ai-send-btn:disabled{background:var(--light-muted);cursor:not-allowed}
+/* api key settings modal */
+.settings-modal-overlay{position:fixed;inset:0;background:rgba(22,16,12,0.6);z-index:800;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(4px)}
+.settings-modal-overlay.on{opacity:1;pointer-events:all}
+.settings-modal{background:var(--cream);border-radius:24px;padding:2.5rem;max-width:520px;width:100%;transform:scale(0.96) translateY(12px);transition:all 0.3s;position:relative}
+.settings-modal-overlay.on .settings-modal{transform:scale(1) translateY(0)}
+.sm-x{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.1rem;color:var(--muted);padding:4px 8px;border-radius:8px;cursor:pointer;transition:all 0.2s}
+.sm-x:hover{background:var(--warm);color:var(--ink)}
+.sm-h{font-family:var(--font-d);font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:0.35rem}
+.sm-sub{font-size:0.82rem;color:var(--muted);margin-bottom:1.75rem;line-height:1.65}
+.sm-tabs{display:flex;gap:0;background:var(--warm);border-radius:12px;padding:4px;margin-bottom:1.5rem}
+.sm-tab{flex:1;padding:0.6rem;border:none;background:none;border-radius:9px;font-size:0.8rem;font-weight:500;font-family:var(--font-b);color:var(--muted);cursor:pointer;transition:all 0.2s;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
+.sm-tab.active{background:white;color:var(--ink);box-shadow:0 1px 4px rgba(22,16,12,0.1)}
+.sm-pane{display:none}
+.sm-pane.on{display:block}
+.sm-label{font-size:0.78rem;font-weight:500;color:var(--ink);margin-bottom:0.5rem;display:block}
+.sm-input{width:100%;border:0.5px solid var(--border);border-radius:var(--r-sm);padding:0.85rem 1rem;font-size:0.88rem;font-family:var(--font-b);outline:none;transition:border-color 0.2s;color:var(--ink);background:white;margin-bottom:1rem}
+.sm-input:focus{border-color:var(--clay)}
+.sm-note{font-size:0.75rem;color:var(--muted);line-height:1.65;margin-bottom:1.25rem;padding:0.75rem;background:var(--warm);border-radius:10px}
+.sm-note a{color:var(--clay);text-decoration:underline}
+.sm-note a:hover{color:var(--clay2)}
+.sm-save{width:100%;padding:0.85rem;background:var(--ink);color:var(--cream);border:none;border-radius:var(--r-sm);font-size:0.88rem;font-weight:500;font-family:var(--font-b);cursor:pointer;transition:background 0.2s;letter-spacing:0.03em}
+.sm-save:hover{background:var(--clay)}
+.sm-saved{display:flex;align-items:center;gap:8px;padding:0.75rem 1rem;background:#e8f5e9;border-radius:10px;font-size:0.82rem;color:#2e7d32;margin-bottom:1rem}
+.sm-clear{background:none;border:0.5px solid var(--border);border-radius:8px;padding:0.5rem 1rem;font-size:0.78rem;color:var(--muted);font-family:var(--font-b);cursor:pointer;transition:all 0.2s;margin-top:0.5rem;width:100%}
+.sm-clear:hover{border-color:var(--rose);color:var(--rose);background:var(--rose-pale)}
+
+/* ─ BIG QUOTE ─ */
+.big-q{background:var(--ink);padding:7rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+.bq-deco{position:absolute;pointer-events:none;border-radius:50%;border:1px solid rgba(192,104,64,0.12)}
+.bq-deco1{width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.bq-deco2{width:900px;height:900px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.bq-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+.bq-mark{font-family:var(--font-d);font-size:7rem;line-height:0.5;color:var(--clay);opacity:0.25;margin-bottom:2rem;user-select:none}
+#bq-quote{font-family:var(--font-d);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:400;font-style:italic;color:var(--cream);line-height:1.42;transition:opacity 0.5s ease}
+.bq-auth{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(250,247,241,0.3);margin-top:1.5rem}
+.bq-nav{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:2.5rem}
+.bq-arrow{width:42px;height:42px;background:rgba(250,247,241,0.06);border:0.5px solid rgba(250,247,241,0.15);border-radius:50%;color:var(--cream);font-size:0.9rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.bq-arrow:hover{background:rgba(192,104,64,0.25);border-color:var(--clay)}
+.bq-dots{display:flex;gap:7px}
+.bq-dot{width:5px;height:5px;border-radius:50%;background:rgba(250,247,241,0.2);cursor:pointer;transition:all 0.3s}
+.bq-dot.on{background:var(--clay);transform:scale(1.4)}
+
+/* ─ JOURNAL ─ */
+.journal-wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:2.5rem;align-items:start}
+.journal-card{background:white;border:0.5px solid var(--border);border-radius:var(--r);padding:2rem}
+.journal-title{font-family:var(--font-d);font-size:1.4rem;font-weight:600;color:var(--ink);margin-bottom:0.3rem}
+.journal-sub{font-size:0.8rem;color:var(--muted);margin-bottom:1.5rem}
+.mood-emojis{display:flex;gap:0.5rem;margin-bottom:1.25rem}
+.m-emoji{width:42px;height:42px;border:0.5px solid var(--border);border-radius:12px;background:none;font-size:1.2rem;transition:all 0.2s}
+.m-emoji.sel,.m-emoji:hover{border-color:var(--clay);background:var(--clay-pale);transform:scale(1.1)}
+.j-input{width:100%;border:0.5px solid var(--border);border-radius:var(--r-sm);padding:0.9rem 1.1rem;font-size:0.88rem;font-family:var(--font-b);resize:none;min-height:120px;outline:none;transition:border-color 0.2s;color:var(--ink);background:var(--cream);line-height:1.65;margin-bottom:1rem}
+.j-input:focus{border-color:var(--clay)}
+.j-footer{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.j-charcount{font-size:0.72rem;color:var(--light-muted)}
+.j-save{flex:1;padding:0.8rem;background:var(--ink);color:var(--cream);border:none;border-radius:var(--r-sm);font-size:0.85rem;font-weight:500;font-family:var(--font-b);transition:background 0.2s;letter-spacing:0.04em}
+.j-save:hover{background:var(--clay)}
+.entries-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.entries-h{font-family:var(--font-d);font-size:1.3rem;font-weight:600;color:var(--ink)}
+.entries-clear{background:none;border:none;font-size:0.75rem;color:var(--muted);padding:4px 8px;border-radius:6px;transition:all 0.2s}
+.entries-clear:hover{color:var(--rose);background:var(--rose-pale)}
+.entry-card{background:white;border:0.5px solid var(--border);border-radius:16px;padding:1.1rem 1.4rem;margin-bottom:0.75rem;animation:slideUp 0.35s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.e-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem}
+.e-left{display:flex;align-items:center;gap:8px}
+.e-emoji{font-size:1.1rem}
+.e-date{font-size:0.68rem;color:var(--muted)}
+.e-del{background:none;border:none;color:var(--light-muted);font-size:0.82rem;padding:2px 6px;border-radius:6px;transition:all 0.2s}
+.e-del:hover{color:var(--rose);background:var(--rose-pale)}
+.e-text{font-size:0.85rem;color:var(--ink);line-height:1.65}
+.no-entries{text-align:center;padding:3rem 2rem;color:var(--muted);font-size:0.85rem}
+
+/* ─ REFLEKSI ─ */
+.refleksi-bg{background:var(--ink);padding:7rem 2.5rem}
+.refleksi-inner{max-width:1200px;margin:0 auto}
+.r-h{font-family:var(--font-d);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;color:var(--cream);line-height:1.1;margin-bottom:0.8rem}
+.r-h em{font-style:italic;color:var(--clay2)}
+.r-lead{font-size:0.9rem;color:rgba(250,247,241,0.45);margin-bottom:3rem;max-width:460px}
+.r-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.r-card{background:rgba(250,247,241,0.03);border:0.5px solid rgba(250,247,241,0.08);border-radius:18px;padding:1.75rem;cursor:pointer;transition:all 0.3s}
+.r-card:hover{background:rgba(250,247,241,0.06);border-color:rgba(192,104,64,0.3)}
+.r-num{font-family:var(--font-d);font-size:2.8rem;font-weight:700;color:rgba(192,104,64,0.18);line-height:1;margin-bottom:0.5rem}
+.r-q{font-family:var(--font-d);font-size:0.98rem;font-style:italic;color:var(--cream);line-height:1.55;margin-bottom:0.5rem}
+.r-card:hover .r-q{color:var(--clay2)}
+.r-hint{font-size:0.72rem;color:rgba(250,247,241,0.3)}
+
+/* ─ HOW IT WORKS ─ */
+.how-bg{background:var(--warm)}
+.how-inner{padding:6rem 2.5rem;max-width:1200px;margin:0 auto}
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:3rem}
+.how-steps::before{content:'';position:absolute;top:2rem;left:12.5%;right:12.5%;height:0.5px;background:var(--border2)}
+.how-step{text-align:center;padding:0 1rem;position:relative}
+.step-circle{width:64px;height:64px;border-radius:50%;border:0.5px solid var(--border2);background:white;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.6rem;position:relative;z-index:1;transition:all 0.3s}
+.how-step:hover .step-circle{background:var(--clay);transform:scale(1.08)}
+.step-num{position:absolute;top:-6px;right:-6px;width:20px;height:20px;background:var(--clay);border-radius:50%;font-size:0.6rem;color:white;display:flex;align-items:center;justify-content:center;font-weight:600}
+.step-title{font-family:var(--font-d);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:0.4rem}
+.step-desc{font-size:0.8rem;color:var(--muted);line-height:1.65}
+
+/* ─ TESTIMONIALS ─ */
+.testi-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.testi-card{background:white;border:0.5px solid var(--border);border-radius:var(--r);padding:1.75rem}
+.testi-stars{color:var(--clay);font-size:0.85rem;margin-bottom:1rem;letter-spacing:2px}
+.testi-text{font-family:var(--font-d);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.6;margin-bottom:1.25rem}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:600}
+.testi-name{font-size:0.82rem;font-weight:500;color:var(--ink)}
+.testi-loc{font-size:0.72rem;color:var(--muted)}
+.testi-featured{background:var(--ink);border-color:var(--ink)}
+.testi-featured .testi-text{color:var(--cream)}
+.testi-featured .testi-name{color:var(--cream)}
+.testi-featured .testi-loc{color:rgba(250,247,241,0.5)}
+.testi-featured .testi-stars{color:var(--clay2)}
+
+/* ─ FAQ ─ */
+.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:0.5px solid var(--border)}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:1.25rem 0;display:flex;align-items:center;justify-content:space-between;font-size:0.95rem;font-weight:500;color:var(--ink);font-family:var(--font-b);cursor:pointer;gap:1rem;transition:color 0.2s}
+.faq-q:hover{color:var(--clay)}
+.faq-icon{width:24px;height:24px;border:0.5px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.9rem;transition:all 0.3s;color:var(--muted)}
+.faq-item.open .faq-icon{background:var(--clay);border-color:var(--clay);color:white;transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;font-size:0.88rem;color:var(--muted);line-height:1.75}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:1.25rem}
+
+/* ─ NEWSLETTER ─ */
+.news-bg{background:var(--clay);padding:5rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+.news-deco{position:absolute;border-radius:50%;background:rgba(255,255,255,0.04);pointer-events:none}
+.news-deco1{width:400px;height:400px;top:50%;right:-100px;transform:translateY(-50%)}
+.news-deco2{width:300px;height:300px;top:50%;left:-80px;transform:translateY(-50%)}
+.news-inner{max-width:560px;margin:0 auto;position:relative;z-index:1}
+.news-eyebrow{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.75rem}
+.news-h{font-family:var(--font-d);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:white;line-height:1.15;margin-bottom:0.75rem}
+.news-sub{font-size:0.88rem;color:rgba(255,255,255,0.7);margin-bottom:2rem}
+.news-form{display:flex;gap:0.5rem;max-width:440px;margin:0 auto}
+.news-input{flex:1;border:none;border-radius:100px;padding:0.9rem 1.4rem;font-size:0.88rem;font-family:var(--font-b);outline:none;color:var(--ink);background:white}
+.news-submit{background:var(--ink);color:white;border:none;border-radius:100px;padding:0.9rem 1.6rem;font-size:0.85rem;font-weight:500;font-family:var(--font-b);letter-spacing:0.04em;transition:background 0.2s;white-space:nowrap}
+.news-submit:hover{background:rgba(22,16,12,0.75)}
+.news-note{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:1rem}
+
+/* ─ FOOTER ─ */
+footer{background:var(--ink);padding:5rem 2.5rem 2.5rem;color:rgba(250,247,241,0.4)}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem}
+.footer-brand{font-family:var(--font-d);font-size:1.6rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;line-height:1}
+.footer-tagline{font-size:0.82rem;line-height:1.75;max-width:260px;margin-bottom:1.5rem}
+.footer-social{display:flex;gap:0.75rem}
+.soc-btn{width:36px;height:36px;background:rgba(250,247,241,0.06);border:0.5px solid rgba(250,247,241,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:rgba(250,247,241,0.5);transition:all 0.2s}
+.soc-btn:hover{background:var(--clay);border-color:var(--clay);color:white}
+.footer-col-h{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(250,247,241,0.55);font-weight:500;margin-bottom:1.1rem}
+.footer-links-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.footer-links-list a{font-size:0.82rem;color:rgba(250,247,241,0.35);transition:color 0.2s}
+.footer-links-list a:hover{color:var(--clay2)}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:0.5px solid rgba(250,247,241,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.72rem}
+.footer-bottom-right{display:flex;gap:2rem}
+.footer-bottom-right a{color:rgba(250,247,241,0.3);transition:color 0.2s}
+.footer-bottom-right a:hover{color:var(--clay2)}
+
+/* ─ MODAL ─ */
+.overlay{position:fixed;inset:0;background:rgba(22,16,12,0.65);z-index:600;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(4px)}
+.overlay.on{opacity:1;pointer-events:all}
+.modal{background:var(--cream);border-radius:28px;padding:3rem 2.5rem;max-width:480px;width:100%;text-align:center;transform:scale(0.95) translateY(16px);transition:all 0.35s;position:relative}
+.overlay.on .modal{transform:scale(1) translateY(0)}
+.modal-x{position:absolute;top:1.2rem;right:1.2rem;background:none;border:none;font-size:1.1rem;color:var(--muted);padding:4px 8px;border-radius:8px;transition:all 0.2s}
+.modal-x:hover{color:var(--ink);background:var(--warm)}
+.modal-em{font-size:3rem;margin-bottom:1rem}
+.modal-chip{font-size:0.67rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;margin-bottom:0.8rem;display:block}
+.modal-quote{font-family:var(--font-d);font-size:1.55rem;font-style:italic;line-height:1.5;color:var(--ink);margin-bottom:0.75rem}
+.modal-auth{font-size:0.78rem;color:var(--muted);margin-bottom:2rem}
+.modal-share{display:flex;gap:0.5rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap}
+.share-btn{background:var(--warm);border:none;border-radius:100px;padding:0.45rem 1rem;font-size:0.75rem;color:var(--ink);font-family:var(--font-b);transition:all 0.2s}
+.share-btn:hover{background:var(--warm2)}
+.modal-close-btn{padding:0.7rem 2.2rem;background:var(--ink);color:var(--cream);border:none;border-radius:100px;font-size:0.82rem;font-weight:500;font-family:var(--font-b);transition:background 0.2s;letter-spacing:0.04em}
+.modal-close-btn:hover{background:var(--clay)}
+
+/* ─ CART SIDEBAR ─ */
+.cart-sidebar{position:fixed;top:0;right:0;bottom:0;width:380px;background:var(--cream);border-left:0.5px solid var(--border);z-index:500;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column}
+.cart-sidebar.open{transform:translateX(0)}
+.cart-header{display:flex;align-items:center;justify-content:space-between;padding:1.5rem;border-bottom:0.5px solid var(--border)}
+.cart-h{font-family:var(--font-d);font-size:1.3rem;font-weight:600;color:var(--ink)}
+.cart-close{background:none;border:none;font-size:1.1rem;color:var(--muted);padding:4px 8px;border-radius:8px;transition:all 0.2s}
+.cart-close:hover{color:var(--ink);background:var(--warm)}
+.cart-body{flex:1;overflow-y:auto;padding:1.5rem}
+.cart-empty{text-align:center;padding:4rem 2rem;color:var(--muted)}
+.cart-empty-icon{font-size:2.5rem;margin-bottom:1rem}
+.cart-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:0.5px solid var(--border);align-items:center}
+.cart-item-img{width:60px;height:60px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.cart-item-info{flex:1}
+.cart-item-name{font-size:0.88rem;font-weight:500;color:var(--ink);margin-bottom:2px}
+.cart-item-var{font-size:0.75rem;color:var(--muted)}
+.cart-item-price{font-size:0.9rem;font-weight:500;color:var(--ink)}
+.cart-qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty-btn{width:24px;height:24px;background:var(--warm);border:none;border-radius:50%;font-size:0.85rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.qty-btn:hover{background:var(--warm2)}
+.qty-num{font-size:0.82rem;font-weight:500;min-width:20px;text-align:center}
+.cart-footer{padding:1.5rem;border-top:0.5px solid var(--border)}
+.cart-total-row{display:flex;justify-content:space-between;margin-bottom:1rem;font-size:0.88rem}
+.cart-total-label{color:var(--muted)}
+.cart-total-val{font-weight:500;font-size:1rem;color:var(--ink)}
+.checkout-btn{width:100%;padding:0.95rem;background:var(--ink);color:var(--cream);border:none;border-radius:var(--r-sm);font-size:0.9rem;font-weight:500;font-family:var(--font-b);transition:background 0.2s;letter-spacing:0.04em;margin-bottom:0.5rem}
+.checkout-btn:hover{background:var(--clay)}
+.continue-btn{width:100%;padding:0.75rem;background:none;border:0.5px solid var(--border2);border-radius:var(--r-sm);font-size:0.85rem;color:var(--muted);font-family:var(--font-b);transition:all 0.2s}
+.continue-btn:hover{border-color:var(--ink);color:var(--ink)}
+.cart-overlay{position:fixed;inset:0;background:rgba(22,16,12,0.3);z-index:499;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(2px)}
+.cart-overlay.on{opacity:1;pointer-events:all}
+
+/* ─ TOAST ─ */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--cream);padding:0.8rem 1.8rem;border-radius:100px;font-size:0.82rem;z-index:999;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ─ SCROLL REVEAL ─ */
+.rev{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease}
+.rev.in{opacity:1;transform:translateY(0)}
+.rev-d1{transition-delay:0.1s}
+.rev-d2{transition-delay:0.2s}
+.rev-d3{transition-delay:0.3s}
+
+/* ─ RESPONSIVE ─ */
+@media(max-width:1024px){
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .r-grid{grid-template-columns:repeat(2,1fr)}
+  .how-steps{grid-template-columns:repeat(2,1fr);gap:2rem}
+  .how-steps::before{display:none}
+  .testi-wrap{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;text-align:center;padding:5rem 1.5rem 3rem;gap:2.5rem}
+  .hero-visual{max-width:380px;margin:0 auto;width:100%}
+  .hero-p,.hero-ctas,.hero-social-proof{margin-left:auto;margin-right:auto;justify-content:center}
+  .nav-links,.nav-actions .nav-btn{display:none}
+  .hamburger{display:flex}
+  .nav{padding:0 1.5rem}
+  .section{padding:4rem 1.5rem}
+  .mood-cards-grid{grid-template-columns:1fr}
+  .journal-wrap{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr 1fr}
+  .testi-wrap{grid-template-columns:1fr}
+  .r-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .news-form{flex-direction:column}
+  .news-input,.news-submit{width:100%;text-align:center;border-radius:var(--r-sm)}
+  .cart-sidebar{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="ann">✨ <b>Gratis ongkir</b> untuk pembelian di atas Rp150.000 &nbsp;·&nbsp; QR update konten setiap minggu <b>otomatis</b></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 16 16"><path d="M8 2C5.8 2 4 3.8 4 6c0 1.4.7 2.6 1.8 3.4L8 14l2.2-4.6C11.3 8.6 12 7.4 12 6c0-2.2-1.8-4-4-4z"/></svg>
+    </div>
+    Mood Carry
+  </a>
+  <div class="nav-links">
+    <a href="#produk">Koleksi</a>
+    <a href="#mood">Mood</a>
+    <a href="#ai">AI Motivasi</a>
+    <a href="#journal">Journal</a>
+    <a href="#about">Tentang</a>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-btn" onclick="scrollTo('#produk')">Shop Sekarang</button>
+    <button class="nav-cart" onclick="toggleCart()" aria-label="Keranjang">🛍
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <div class="nav-logo" style="font-size:1.3rem">Mood Carry</div>
+    <button onclick="toggleMobile()" style="background:none;border:none;font-size:1.3rem;color:var(--muted)">✕</button>
+  </div>
+  <a href="#produk" onclick="toggleMobile()">Koleksi</a>
+  <a href="#mood" onclick="toggleMobile()">Pilih Mood</a>
+  <a href="#ai" onclick="toggleMobile()">AI Motivasi</a>
+  <a href="#journal" onclick="toggleMobile()">Journal</a>
+  <a href="#about" onclick="toggleMobile()">Tentang</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text rev">
+    <div class="hero-eyebrow"><span class="eyebrow-line"></span>Gantungan kunci × Totebag × Motivasi</div>
+    <h1 class="hero-h1">Bawa<br><em>perasaanmu</em><br>kemana pun.</h1>
+    <p class="hero-p">Gantungan kunci unik yang berubah jadi totebag — dan di dalamnya ada QR code berisi motivasi, refleksi, dan semangat yang ditulis khusus untukmu.</p>
+    <div class="hero-ctas">
+      <a href="#produk" class="btn-primary">Lihat Koleksi →</a>
+      <a href="#ai" class="btn-secondary">Coba AI Motivasi</a>
+    </div>
+    <div class="hero-social-proof">
+      <div class="sp-avatars">
+        <div class="sp-avatar" style="background:#faeee5;color:var(--clay)">R</div>
+        <div class="sp-avatar" style="background:#eeedfc;color:var(--violet)">S</div>
+        <div class="sp-avatar" style="background:#e3f3eb;color:var(--sage)">A</div>
+        <div class="sp-avatar" style="background:#fbe8ef;color:var(--rose)">N</div>
+      </div>
+      <div class="sp-text">Disukai oleh <b>1.200+ pembeli</b> di Indonesia</div>
+    </div>
+  </div>
+  <div class="hero-visual rev rev-d2">
+    <div class="hero-bag-wrap">
+      <div class="hero-badge-float">🎒 Foldable Tote</div>
+      <svg viewBox="0 0 260 310" style="max-width:220px" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M95 85 Q95 50 130 50 Q165 50 165 85" stroke="#c06840" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <rect x="40" y="85" width="180" height="200" rx="20" fill="#e9e2d4" stroke="#c06840" stroke-width="1.5"/>
+        <rect x="68" y="145" width="124" height="114" rx="14" fill="none" stroke="rgba(192,104,64,0.3)" stroke-width="1" stroke-dasharray="5 4"/>
+        <rect x="89" y="160" width="82" height="82" rx="8" fill="white" stroke="rgba(192,104,64,0.2)" stroke-width="1"/>
+        <rect x="96" y="167" width="10" height="10" rx="3" fill="#c06840" opacity=".85"/>
+        <rect x="110" y="169" width="5" height="5" rx="1" fill="#c06840" opacity=".4"/>
+        <rect x="119" y="167" width="10" height="10" rx="3" fill="#c06840" opacity=".85"/>
+        <rect x="132" y="167" width="5" height="10" rx="1" fill="#c06840" opacity=".35"/>
+        <rect x="141" y="167" width="10" height="10" rx="3" fill="#c06840" opacity=".85"/>
+        <rect x="96" y="181" width="5" height="10" rx="1" fill="#c06840" opacity=".4"/>
+        <rect x="105" y="181" width="10" height="5" rx="1" fill="#c06840" opacity=".35"/>
+        <rect x="119" y="181" width="5" height="5" rx="1" fill="#c06840" opacity=".5"/>
+        <rect x="128" y="185" width="10" height="5" rx="1" fill="#c06840" opacity=".35"/>
+        <rect x="141" y="181" width="5" height="10" rx="1" fill="#c06840" opacity=".4"/>
+        <rect x="96" y="195" width="10" height="10" rx="3" fill="#c06840" opacity=".85"/>
+        <rect x="110" y="197" width="8" height="5" rx="1" fill="#c06840" opacity=".35"/>
+        <rect x="121" y="195" width="7" height="10" rx="1" fill="#c06840" opacity=".4"/>
+        <rect x="132" y="195" width="5" height="5" rx="1" fill="#c06840" opacity=".35"/>
+        <rect x="141" y="195" width="10" height="10" rx="3" fill="#c06840" opacity=".85"/>
+        <rect x="96" y="210" width="5" height="5" rx="1" fill="#c06840" opacity=".35"/>
+        <rect x="105" y="208" width="10" height="7" rx="1" fill="#c06840" opacity=".4"/>
+        <rect x="119" y="210" width="7" height="5" rx="1" fill="#c06840" opacity=".35"/>
+        <rect x="130" y="208" width="5" height="7" rx="1" fill="#c06840" opacity=".4"/>
+        <rect x="141" y="210" width="5" height="5" rx="1" fill="#c06840" opacity=".35"/>
+        <rect x="96" y="219" width="10" height="10" rx="3" fill="#c06840" opacity=".85"/>
+        <rect x="110" y="221" width="8" height="5" rx="1" fill="#c06840" opacity=".35"/>
+        <rect x="121" y="219" width="5" height="10" rx="1" fill="#c06840" opacity=".4"/>
+        <rect x="130" y="221" width="10" height="5" rx="1" fill="#c06840" opacity=".35"/>
+        <rect x="144" y="219" width="5" height="10" rx="1" fill="#c06840" opacity=".4"/>
+        <text x="130" y="253" text-anchor="middle" font-size="9" fill="#9a8878" font-family="Georgia,serif" letter-spacing="2.5">MOOD CARRY</text>
+        <text x="130" y="128" text-anchor="middle" font-size="12" fill="#7a7068" font-family="Georgia,serif" font-style="italic">mood carry</text>
+        <circle cx="130" cy="87" r="9" fill="none" stroke="#c06840" stroke-width="2.5"/>
+      </svg>
+      <div class="hero-badge-scan"><span class="scan-dot"></span>Scan QR untuk motivasi</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="tickerInner"></div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products-bg" id="produk">
+  <div class="products-inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:3rem" class="rev">
+      <div>
+        <div class="sec-eye">Koleksi Mood Carry</div>
+        <h2 class="sec-h" style="margin-bottom:0.4rem">Temukan varian<br><em>yang cocok untukmu</em></h2>
+        <p class="sec-lead" style="margin-bottom:0">Setiap warna membawa energi berbeda — pilih yang paling merepresentasikan moodmu.</p>
+      </div>
+      <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap">
+        <span style="font-size:0.75rem;color:var(--muted)">Filter:</span>
+        <button class="mood-tab active" onclick="filterProduct('all',this)">Semua</button>
+        <button class="mood-tab" onclick="filterProduct('basic',this)">Basic</button>
+        <button class="mood-tab" onclick="filterProduct('premium',this)">Premium</button>
+        <button class="mood-tab" onclick="filterProduct('limited',this)">Limited</button>
+      </div>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- MOOD SECTION -->
+<div class="section" id="mood">
+  <div class="rev" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:0">
+    <div>
+      <div class="sec-eye">Pilih moodmu</div>
+      <h2 class="sec-h" style="margin-bottom:0.4rem">Hari ini kamu<br><em>merasa seperti apa?</em></h2>
+      <p class="sec-lead" style="margin-bottom:0">Klik kategori yang paling dekat dengan perasaanmu sekarang.</p>
+    </div>
+  </div>
+  <div style="margin-top:2.5rem" class="rev rev-d1">
+    <div class="mood-tabs" id="moodTabs"></div>
+    <div id="moodContent"></div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- BIG QUOTE -->
+<section class="big-q">
+  <div class="bq-deco bq-deco1"></div>
+  <div class="bq-deco bq-deco2"></div>
+  <div class="bq-inner">
+    <div class="bq-mark">"</div>
+    <p id="bq-quote">Kamu tidak harus merasa kuat setiap saat. Cukup bertahan hari ini, dan mulai lagi besok.</p>
+    <p class="bq-auth" id="bq-auth">— Mood Carry</p>
+    <div class="bq-nav">
+      <button class="bq-arrow" onclick="prevBQ()">←</button>
+      <div class="bq-dots" id="bqDots"></div>
+      <button class="bq-arrow" onclick="nextBQ()">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- AI MOTIVASI -->
+<section class="ai-section" id="ai">
+  <div class="ai-wrap rev">
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <div class="sec-eye" style="justify-content:center">ChatGPT + Claude · Web Search</div>
+      <h2 class="sec-h" style="text-align:center;margin-bottom:0.5rem">Motivasi yang <em>personal untukmu</em></h2>
+      <p style="color:var(--muted);font-size:0.92rem;max-width:500px;margin:0 auto;line-height:1.75">Pilih model AI favoritmu — ChatGPT atau Claude — keduanya bisa mencari info terkini dari internet dan merangkainya jadi kata-kata yang tepat untukmu.</p>
+    </div>
+    <div class="ai-card">
+
+      <!-- TOPBAR -->
+      <div class="ai-topbar">
+        <div class="ai-topbar-left">
+          <div class="ai-avatar" id="aiAvatar">💛</div>
+          <div>
+            <div class="ai-name" id="aiName">Mood Carry AI</div>
+            <div class="ai-online" id="aiStatus">Siap membantu</div>
+          </div>
+        </div>
+        <div class="ai-topbar-right">
+          <!-- model switcher -->
+          <div class="model-switch">
+            <button class="model-btn gpt active" id="btnGPT" onclick="switchModel('gpt')">
+              <span class="model-dot"></span>ChatGPT
+            </button>
+            <button class="model-btn claude" id="btnClaude" onclick="switchModel('claude')">
+              <span class="model-dot"></span>Claude
+            </button>
+          </div>
+          <span class="ai-badge web" id="aiBadgeWeb">🌐 Web Search</span>
+          <button class="settings-btn" onclick="openSettings()" title="Pengaturan API Key">⚙</button>
+        </div>
+      </div>
+
+      <!-- SETUP BANNER (shown when GPT selected but no key) -->
+      <div class="ai-setup-banner" id="setupBanner">
+        <div class="setup-text">
+          <b>🔑 ChatGPT API Key diperlukan.</b> Masukkan API key OpenAI-mu untuk mulai menggunakan ChatGPT dengan web search. Gratis cara dapatnya!
+        </div>
+        <button class="setup-key-btn" onclick="openSettings()">Masukkan API Key →</button>
+      </div>
+
+      <!-- MESSAGES -->
+      <div class="ai-messages" id="aiMessages">
+        <div class="msg bot">
+          <div class="msg-bubble">Hei! Aku Mood Carry AI 💛
+Pilih model di atas — ChatGPT atau Claude — lalu ceritakan apa yang kamu rasakan hari ini. Aku bisa mencari informasi terkini dari internet dan merangkainya jadi kata-kata yang tepat untukmu.</div>
+          <div class="msg-meta">Sekarang</div>
+        </div>
+      </div>
+
+      <!-- STATUS BAR -->
+      <div class="ai-status-bar" id="aiStatusBar">
+        <div class="spin"></div>
+        <span id="aiStatusText">Memproses...</span>
+      </div>
+
+      <!-- TYPING -->
+      <div class="typing-indicator" id="typingIndicator">
+        <div class="typing-bubble">
+          <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
+        </div>
+      </div>
+
+      <!-- CHIPS -->
+      <div class="ai-quick-chips" id="aiChips"></div>
+
+      <!-- INPUT -->
+      <div class="ai-inputrow">
+        <textarea class="ai-textarea" id="aiInput"
+          placeholder="Ceritakan perasaanmu... (Enter untuk kirim, Shift+Enter baris baru)"
+          rows="1"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg()}"
+          oninput="autoResize(this)"></textarea>
+        <button class="ai-send-btn" id="sendBtn" onclick="sendMsg()">↑</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SETTINGS MODAL -->
+<div class="settings-modal-overlay" id="settingsOverlay" onclick="if(event.target===this)closeSettings()">
+  <div class="settings-modal">
+    <button class="sm-x" onclick="closeSettings()">✕</button>
+    <div class="sm-h">Pengaturan AI</div>
+    <p class="sm-sub">Masukkan API key untuk mengaktifkan model AI pilihanmu. Key disimpan di browser dan tidak pernah dikirim ke server kami.</p>
+
+    <!-- tabs -->
+    <div class="sm-tabs">
+      <button class="sm-tab active" id="smTabGPT" onclick="switchSettingsTab('gpt')">
+        <span style="color:#10a37f">●</span> ChatGPT (OpenAI)
+      </button>
+      <button class="sm-tab" id="smTabClaude" onclick="switchSettingsTab('claude')">
+        <span style="color:var(--clay)">●</span> Claude (Anthropic)
+      </button>
+    </div>
+
+    <!-- ChatGPT pane -->
+    <div class="sm-pane on" id="paneGPT">
+      <div id="gptSavedBanner" class="sm-saved" style="display:none">
+        ✓ API Key OpenAI sudah tersimpan dan aktif
+      </div>
+      <label class="sm-label">OpenAI API Key</label>
+      <input class="sm-input" type="password" id="gptKeyInput" placeholder="sk-proj-..." autocomplete="off">
+      <div class="sm-note">
+        Cara mendapatkan API key: <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a> → Create new secret key.<br><br>
+        Model yang digunakan: <b>gpt-4o-mini</b> (hemat & cepat) dengan kemampuan web search real-time.<br><br>
+        ⚠️ API key tidak gratis — penggunaan dikenakan biaya sesuai tarif OpenAI (sangat terjangkau untuk percakapan ringan).
+      </div>
+      <button class="sm-save" onclick="saveGPTKey()">Simpan & Aktifkan ChatGPT</button>
+      <button class="sm-clear" onclick="clearGPTKey()">Hapus API Key Tersimpan</button>
+    </div>
+
+    <!-- Claude pane -->
+    <div class="sm-pane" id="paneClaude">
+      <div class="sm-saved">
+        ✓ Claude AI sudah aktif otomatis — tidak perlu API key di sini
+      </div>
+      <div class="sm-note">
+        Claude tersedia langsung di website Mood Carry tanpa perlu konfigurasi tambahan. Cukup pilih model "Claude" di tombol switcher di chat dan mulai percakapan.<br><br>
+        Claude juga didukung web search untuk mencari informasi terkini dari internet.
+      </div>
+      <button class="sm-save" style="background:var(--clay)" onclick="switchModel('claude');closeSettings()">
+        Aktifkan Claude Sekarang
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- JOURNAL -->
+<section class="section" id="journal">
+  <div class="rev" style="margin-bottom:3rem">
+    <div class="sec-eye">Catatan harianmu</div>
+    <h2 class="sec-h" style="margin-bottom:0.5rem">Tulis, <em>rasakan, simpan.</em></h2>
+    <p class="sec-lead">Mini journal pribadi yang tersimpan di browsermu. Tidak ada yang membacanya kecuali kamu.</p>
+  </div>
+  <div class="journal-wrap">
+    <div class="journal-card rev">
+      <div class="journal-title">Hari ini...</div>
+      <div class="journal-sub">Bagaimana perasaanmu sekarang?</div>
+      <div class="mood-emojis" id="jEmojis">
+        <button class="m-emoji sel" data-m="😊" onclick="selJMood(this)">😊</button>
+        <button class="m-emoji" data-m="😌" onclick="selJMood(this)">😌</button>
+        <button class="m-emoji" data-m="😔" onclick="selJMood(this)">😔</button>
+        <button class="m-emoji" data-m="😤" onclick="selJMood(this)">😤</button>
+        <button class="m-emoji" data-m="🥺" onclick="selJMood(this)">🥺</button>
+        <button class="m-emoji" data-m="✨" onclick="selJMood(this)">✨</button>
+        <button class="m-emoji" data-m="🤩" onclick="selJMood(this)">🤩</button>
+      </div>
+      <textarea class="j-input" id="jText" placeholder="Tulis apapun yang kamu rasakan hari ini... tidak ada yang salah." oninput="updateCharCount(this)" maxlength="500"></textarea>
+      <div class="j-footer">
+        <span class="j-charcount" id="charCount">0 / 500</span>
+        <button class="j-save" onclick="saveEntry()">Simpan catatan ✓</button>
+      </div>
+    </div>
+    <div class="rev rev-d2">
+      <div class="entries-header">
+        <div class="entries-h">Catatan tersimpan</div>
+        <button class="entries-clear" onclick="clearEntries()">Hapus semua</button>
+      </div>
+      <div id="entriesList"></div>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- REFLEKSI -->
+<section class="refleksi-bg">
+  <div class="refleksi-inner rev">
+    <div class="sec-eye" style="color:rgba(250,247,241,0.35)">Untuk dirimu sendiri</div>
+    <h2 class="r-h">Pertanyaan yang<br><em>menunggumu</em></h2>
+    <p class="r-lead">Tidak harus dijawab sekarang. Cukup biarkan pertanyaan ini tinggal bersamamu.</p>
+    <div class="r-grid" id="refleksiGrid"></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<div class="how-bg" id="about">
+  <div class="how-inner rev">
+    <div class="sec-eye">Cara kerja</div>
+    <h2 class="sec-h">Semudah <em>scan & rasakan</em></h2>
+    <p class="sec-lead">Dari gantungan kunci kecil ke momen yang berarti — hanya empat langkah.</p>
+    <div class="how-steps" id="howSteps"></div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="rev" style="margin-bottom:3rem">
+    <div class="sec-eye">Kata mereka</div>
+    <h2 class="sec-h">Ribuan orang sudah<br><em>merasakannya</em></h2>
+  </div>
+  <div class="testi-wrap rev" id="testiWrap"></div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- FAQ -->
+<section class="section" style="padding-bottom:7rem">
+  <div class="rev" style="margin-bottom:3rem;text-align:center">
+    <div class="sec-eye" style="justify-content:center">Ada pertanyaan?</div>
+    <h2 class="sec-h" style="text-align:center">Yang sering<br><em>ditanyakan</em></h2>
+  </div>
+  <div class="faq-list rev" id="faqList"></div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="news-bg">
+  <div class="news-deco news-deco1"></div>
+  <div class="news-deco news-deco2"></div>
+  <div class="news-inner rev">
+    <div class="news-eyebrow">Update & Inspirasi</div>
+    <h2 class="news-h">Dapatkan motivasi<br>setiap minggu</h2>
+    <p class="news-sub">Kutipan pilihan, konten refleksi, dan update koleksi terbaru — langsung ke emailmu.</p>
+    <div class="news-form">
+      <input type="email" class="news-input" placeholder="emailmu@gmail.com" id="newsEmail">
+      <button class="news-submit" onclick="subscribeNews()">Daftar Gratis</button>
+    </div>
+    <p class="news-note">Tidak ada spam. Bisa berhenti kapan saja.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Mood Carry</div>
+      <p class="footer-tagline">Gantungan kunci yang berubah jadi totebag, dengan QR code motivasi tersembunyi di dalamnya. Untuk mengingatkanmu bahwa kamu lebih dari sekedar hari ini.</p>
+      <div class="footer-social">
+        <a href="#" class="soc-btn">ig</a>
+        <a href="#" class="soc-btn">tk</a>
+        <a href="#" class="soc-btn">wa</a>
+        <a href="#" class="soc-btn">sh</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-h">Produk</div>
+      <ul class="footer-links-list">
+        <li><a href="#">Koleksi Basic</a></li>
+        <li><a href="#">Koleksi Premium</a></li>
+        <li><a href="#">Limited Edition</a></li>
+        <li><a href="#">Bundle Hemat</a></li>
+        <li><a href="#">Gift Card</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">Info</div>
+      <ul class="footer-links-list">
+        <li><a href="#">Tentang Kami</a></li>
+        <li><a href="#">Cara Kerja QR</a></li>
+        <li><a href="#">Blog Motivasi</a></li>
+        <li><a href="#">Affiliate Program</a></li>
+        <li><a href="#">Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">Bantuan</div>
+      <ul class="footer-links-list">
+        <li><a href="#">Cara Pesan</a></li>
+        <li><a href="#">Pengiriman</a></li>
+        <li><a href="#">Pengembalian</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Hubungi Kami</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Mood Carry. Dibuat dengan ❤ di Indonesia.</span>
+    <div class="footer-bottom-right">
+      <a href="#">Privasi</a>
+      <a href="#">Syarat & Ketentuan</a>
+      <a href="#">Cookie</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div class="modal-em" id="mEm">✨</div>
+    <span class="modal-chip" id="mChip">Semangat</span>
+    <p class="modal-quote" id="mQ">"Kutipan."</p>
+    <p class="modal-auth" id="mAuth">— Mood Carry</p>
+    <div class="modal-share">
+      <button class="share-btn" onclick="copyQuote()">📋 Salin kutipan</button>
+      <button class="share-btn" onclick="shareWA()">💬 Share ke WA</button>
+    </div>
+    <button class="modal-close-btn" onclick="closeModal()">Tutup</button>
+  </div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <div class="cart-h">Keranjang Belanja</div>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Subtotal</span>
+      <span class="cart-total-val" id="cartTotal">Rp0</span>
+    </div>
+    <div class="cart-total-row" style="font-size:0.78rem">
+      <span class="cart-total-label">Ongkos kirim</span>
+      <span style="color:var(--sage);font-weight:500">Gratis!</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">Lanjut ke Pembayaran →</button>
+    <button class="continue-btn" onclick="toggleCart()">Lanjut Belanja</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── DATA ───
+const PRODUCTS = [
+  {id:1,name:'Mood Carry Clay',variant:'Terra Clay / Krem',color:'#c06840',bg:'#faeee5',emoji:'🍂',price:89000,oldPrice:null,badge:'hot',category:'basic',colors:['#c06840','#e8956e','#f5d5c0'],stars:5,reviews:234,desc:'Warna tanah hangat yang menenangkan. Cocok untuk kamu yang suka earthy tones.'},
+  {id:2,name:'Mood Carry Violet',variant:'Deep Violet / Krem',color:'#4a3fa8',bg:'#eeedfc',emoji:'🔮',price:89000,oldPrice:null,badge:'new',category:'basic',colors:['#4a3fa8','#7068d4','#b8b4f0'],stars:5,reviews:89,desc:'Warna ungu mendalam yang misterius. Untuk jiwa yang kreatif dan penuh rasa ingin tahu.'},
+  {id:3,name:'Mood Carry Sage',variant:'Sage Green / Krem',color:'#2d6e50',bg:'#e3f3eb',emoji:'🌿',price:89000,oldPrice:null,badge:null,category:'basic',colors:['#2d6e50','#4a9e76','#a8d9c0'],stars:4,reviews:156,desc:'Hijau sage yang menyejukkan. Menghadirkan ketenangan alam di setiap langkahmu.'},
+  {id:4,name:'Mood Carry Rose',variant:'Dusty Rose / Krem',color:'#a83055',bg:'#fbe8ef',emoji:'🌹',price:89000,oldPrice:null,badge:null,category:'basic',colors:['#a83055','#d4607e','#f0b0c8'],stars:5,reviews:201,desc:'Merah mawar yang lembut dan feminin. Untuk hari-hari yang penuh cinta.'},
+  {id:5,name:'Carry Premium Onyx',variant:'All-Black / Silver detail',color:'#2c2c2a',bg:'#e8e6e0',emoji:'🖤',price:149000,oldPrice:189000,badge:'ltd',category:'premium',colors:['#2c2c2a','#5c5c58','#a0a098'],stars:5,reviews:67,desc:'Edisi premium all-black dengan detail silver. Elegan dan timeless untuk segala kesempatan.'},
+  {id:6,name:'Carry Premium Linen',variant:'Natural Linen / Gold detail',color:'#8f7d5e',bg:'#f5f0e6',emoji:'✨',price:149000,oldPrice:189000,badge:'ltd',category:'premium',colors:['#8f7d5e','#b5a07c','#ddd0b8'],stars:5,reviews:43,desc:'Linen natural premium dengan accent emas. Sophisticated dan hangat di tangan.'},
+  {id:7,name:'Carry × Batik Mega',variant:'Batik Motif / Krem',color:'#9a3d1a',bg:'#f5e8e0',emoji:'🎨',price:199000,oldPrice:249000,badge:'ltd',category:'limited',colors:['#9a3d1a','#c45e2a','#e8a878'],stars:5,reviews:28,desc:'Kolaborasi dengan pengrajin batik lokal. Motif mega mendung yang ikonik.'},
+  {id:8,name:'Carry × Floral June',variant:'Bunga Musim / Krem',color:'#6e3d7a',bg:'#f0e8f5',emoji:'🌸',price:199000,oldPrice:249000,badge:'ltd',category:'limited',colors:['#6e3d7a','#9e6aae','#d0b0e0'],stars:5,reviews:19,desc:'Edisi floral musiman dengan motif bunga-bunga lembut. Limited dan tidak akan diproduksi ulang.'},
+];
+
+const MOODS = [
+  {id:'semangat',label:'🔥 Semangat',color:'clay',line:'#c06840',bg:'#faeee5',
+    cards:[
+      {em:'🔥',tag:'Semangat',q:'Kamu sudah sampai sejauh ini. Jangan pernah meremehkan itu.',sub:'Untuk hari-hari yang butuh dorongan kecil'},
+      {em:'⚡',tag:'Energi',q:'Yang membedakanmu bukan bakat, tapi keputusan untuk terus mencoba.',sub:'Kamu lebih tangguh dari yang kamu bayangkan'},
+      {em:'🏆',tag:'Pencapaian',q:'Hari-hari kecil yang konsisten menciptakan perubahan besar.',sub:'Setiap langkah kecil itu sangat berarti'},
+    ]},
+  {id:'tenang',label:'🌿 Tenang',color:'sage',line:'#2d6e50',bg:'#e3f3eb',
+    cards:[
+      {em:'🌿',tag:'Grounding',q:'Satu napas dalam-dalam. Kamu ada di sini, dan itu sudah cukup.',sub:'Untuk hari-hari saat kamu perlu hadir'},
+      {em:'🌊',tag:'Alir',q:'Tidak semua hal perlu dikontrol. Ada keindahan dalam melepaskan.',sub:'Percayakan prosesnya'},
+      {em:'🍃',tag:'Damai',q:'Ketenangan bukan berarti tidak ada badai. Tapi menemukan teduh di tengahnya.',sub:'Kamu bisa menemukan jeda di mana saja'},
+    ]},
+  {id:'sedih',label:'☁️ Sedih',color:'violet',line:'#4a3fa8',bg:'#eeedfc',
+    cards:[
+      {em:'☁️',tag:'Sedang berat',q:'Tidak apa-apa tidak baik-baik saja. Perasaan bukan musuh yang harus dilawan.',sub:'Untuk hari-hari yang terasa berat'},
+      {em:'💙',tag:'Empati',q:'Kamu sudah menanggung terlalu banyak sendirian. Izinkan dirimu berbagi beban.',sub:'Kamu tidak harus menghadapinya sendirian'},
+      {em:'🌧',tag:'Proses',q:'Hujan tidak selamanya. Dan kamu sudah melewati banyak badai sebelumnya.',sub:'Ini juga akan berlalu'},
+    ]},
+  {id:'lelah',label:'😮‍💨 Lelah',color:'rose',line:'#a83055',bg:'#fbe8ef',
+    cards:[
+      {em:'😮‍💨',tag:'Istirahat',q:'Istirahat bukan kelemahan. Istirahat adalah bagian dari kerja keras.',sub:'Tubuhmu berhak mendapat jedanya'},
+      {em:'🛌',tag:'Pulih',q:'Kamu bukan mesin. Mengisi ulang energi adalah tindakan yang bijak.',sub:'Rawat dirimu dengan lembut'},
+      {em:'🌙',tag:'Malam ini',q:'Hari ini sudah cukup. Tidak semua hal harus selesai hari ini.',sub:'Izinkan dirimu berhenti sejenak'},
+    ]},
+  {id:'baru',label:'🌱 Mulai Baru',color:'clay',line:'#c06840',bg:'#faeee5',
+    cards:[
+      {em:'🌱',tag:'Awal',q:'Langkah pertama selalu terasa paling berat. Tapi justru di situlah keberanian tinggal.',sub:'Untuk hari-hari saat kamu memulai sesuatu'},
+      {em:'🚀',tag:'Berani',q:'Sempurna adalah musuh dari mulai. Cukup mulai, dan sempurnakan di perjalanan.',sub:'Mulailah sekarang, apapun kondisinya'},
+      {em:'✨',tag:'Segar',q:'Setiap hari adalah kesempatan untuk menjadi versi dirimu yang sedikit lebih baik.',sub:'Versimu hari ini sudah lebih baik dari kemarin'},
+    ]},
+  {id:'penasaran',label:'🔭 Penasaran',color:'slate',line:'#3d5a6e',bg:'#e6eef4',
+    cards:[
+      {em:'🔭',tag:'Penasaran',q:'Rasa ingin tahu adalah keberanian dalam bentuk yang paling lembut.',sub:'Teruslah bertanya dan menjelajah'},
+      {em:'💡',tag:'Ide',q:'Tidak ada ide yang terlalu kecil untuk dirawat. Beri ia waktu untuk tumbuh.',sub:'Idemu bisa mengubah segalanya'},
+      {em:'🗺',tag:'Petualangan',q:'Hidup paling menarik bukan saat kamu tahu semua jawabannya.',sub:'Nikmati misteri perjalananmu'},
+    ]},
+];
+
+const BIG_QUOTES = [
+  {q:'Kamu tidak harus merasa kuat setiap saat. Cukup bertahan hari ini, dan mulai lagi besok.',a:'— Mood Carry'},
+  {q:'Pertumbuhan tidak selalu terlihat dari luar. Kadang yang tumbuh adalah cara kamu memandang dirimu sendiri.',a:'— Mood Carry'},
+  {q:'Pelan-pelan bukan berarti diam. Kamu tetap bergerak, dan itu sudah cukup.',a:'— Mood Carry'},
+  {q:'Bukan tentang siapa yang paling cepat. Tapi siapa yang terus melangkah meskipun lelah.',a:'— Mood Carry'},
+  {q:'Izinkan dirimu istirahat tanpa rasa bersalah. Kamu bukan mesin.',a:'— Mood Carry'},
+  {q:'Hari yang buruk tidak membuat kamu jadi orang yang buruk.',a:'— Mood Carry'},
+  {q:'Setiap versi dirimu yang pernah ada sudah cukup berjuang. Terima kasih sudah bertahan.',a:'— Mood Carry'},
+  {q:'Kamu sedang belajar jadi dirimu sendiri. Dan itu proses yang paling berani.',a:'— Mood Carry'},
+];
+
+const REFLEKSI = [
+  {n:'01',q:'Apa satu hal kecil yang membuatmu tersenyum hari ini?',h:'Tidak perlu besar. Cukup satu.'},
+  {n:'02',q:'Apa yang sedang kamu perjuangkan tanpa ada yang tahu?',h:'Kamu tidak harus menanggungnya sendirian.'},
+  {n:'03',q:'Kalau bisa bilang satu hal ke dirimu 5 tahun lalu, apa itu?',h:'Mungkin kamu perlu mendengarnya sekarang.'},
+  {n:'04',q:'Siapa yang sudah kamu lupakan untuk diucapkan terima kasih?',h:'Mungkin saatnya hubungi mereka hari ini.'},
+  {n:'05',q:'Apa yang kamu takuti tapi sangat ingin kamu coba?',h:'Takut dan keinginan sering datang bersama.'},
+  {n:'06',q:'Kapan terakhir kali kamu melakukan sesuatu hanya untuk dirimu?',h:'Kamu berhak memprioritaskan dirimu.'},
+  {n:'07',q:'Versi dirimu seperti apa yang sedang kamu tuju?',h:'Gambaran itu yang akan menuntunmu.'},
+  {n:'08',q:'Apa satu kebiasaan kecil yang bisa kamu mulai besok pagi?',h:'Perubahan besar lahir dari langkah yang sangat kecil.'},
+];
+
+const HOW_STEPS = [
+  {em:'🛍',n:'01',t:'Beli Mood Carry',d:'Pilih varian warna yang paling merepresentasikan moodmu.'},
+  {em:'👜',n:'02',t:'Buka jadi totebag',d:'Lipat gantungan kunci menjadi totebag penuh. Mudah, cepat.'},
+  {em:'📱',n:'03',t:'Scan QR di dalam',d:'Temukan QR code tersembunyi di lapisan dalam totebag.'},
+  {em:'💛',n:'04',t:'Baca & rasakan',d:'Dapatkan motivasi, refleksi, atau semangat yang kamu butuhkan.'},
+];
+
+const TESTI = [
+  {stars:5,text:'Awalnya aku skeptis, tapi pas scan QR-nya dan baca kutipannya... nangis. Tepat banget sama yang aku rasain.',name:'Rara Azalea',loc:'Jakarta',av:'R',avbg:'#faeee5',avc:'#c06840',featured:false},
+  {stars:5,text:'Ini bukan cuma tas. Ini reminder bahwa aku perlu jeda. Udah jadi ritual pagi-ku buat scan QR sebelum kerja.',name:'Sinta Dewi',loc:'Yogyakarta',av:'S',avbg:'var(--ink)',avc:'var(--cream)',featured:true},
+  {stars:5,text:'Temenku yang punya ini dan aku minjam sekali — langsung beli sendiri. Kualitasnya bagus dan konsepnya unik banget!',name:'Ayu Pratiwi',loc:'Surabaya',av:'A',avbg:'#e3f3eb',avc:'#2d6e50',featured:false},
+  {stars:5,text:'Sempurna buat hadiah! Temenku nangis waktu aku kasih ini. Packaging-nya juga cantik banget.',name:'Nadia Putri',loc:'Bandung',av:'N',avbg:'#fbe8ef',avc:'#a83055',featured:false},
+  {stars:5,text:'Udah beli 3 varian. Warna Clay jadi favorit. Dan kutipan yang muncul tiap minggu selalu relate sama hidupku entah gimana.',name:'Bella Maharani',loc:'Medan',av:'B',avbg:'#eeedfc',avc:'#4a3fa8',featured:false},
+  {stars:5,text:'Sebagai penggemar journaling, konsep ini cocok banget. AI-nya juga beneran ngasih jawaban yang berasa personal.',name:'Clara Santos',loc:'Bali',av:'C',avbg:'#f5f0e6',avc:'#8f7d5e',featured:false},
+];
+
+const FAQ = [
+  {q:'Apa itu Mood Carry?',a:'Mood Carry adalah gantungan kunci unik berbahan kain berkualitas yang bisa dilipat dan berubah menjadi totebag ukuran penuh. Di dalam totebag terdapat QR code eksklusif yang menghubungkan kamu ke website ini — berisi motivasi, refleksi harian, mini journal, dan AI yang siap menemanimu.'},
+  {q:'Bagaimana cara scan QR code-nya?',a:'Cukup buka kamera smartphone-mu dan arahkan ke QR code di dalam totebag. Tidak perlu download aplikasi apapun. Langsung terbuka di browser.'},
+  {q:'Apakah konten QR berubah terus?',a:'Ya! Konten di website ini (kutipan, refleksi, dan mood cards) diperbarui setiap minggu. Jadi setiap kali kamu scan, bisa menemukan sesuatu yang baru dan relevan.'},
+  {q:'Apakah AI Motivasi-nya gratis?',a:'Ya, AI Motivasi sepenuhnya gratis untuk semua pembeli Mood Carry. Kamu bisa chat sebanyak yang kamu mau, kapan saja.'},
+  {q:'Berapa lama pengiriman?',a:'Pengiriman dalam kota 1-2 hari kerja, luar kota 3-5 hari kerja via JNE/SiCepat/J&T. Gratis ongkir untuk pembelian di atas Rp150.000.'},
+  {q:'Bisakah QR code digunakan berkali-kali?',a:'Tentu! QR code bisa discan berkali-kali dan berlaku selamanya. Tidak ada masa kadaluarsa.'},
+  {q:'Apakah ada garansi produk?',a:'Kami memberikan garansi penggantian produk jika ada cacat produksi dalam 14 hari setelah penerimaan. Hubungi kami via WhatsApp dengan foto produk.'},
+];
+
+// ─── STATE ───
+let cart = JSON.parse(localStorage.getItem('mc_cart')||'[]');
+let entries = JSON.parse(localStorage.getItem('mc_entries')||'[]');
+let selMood = '😊';
+let bqIdx = 0;
+let currentMoodTab = 'semangat';
+let productFilter = 'all';
+let activeColors = {};
+
+// ─── INIT ───
+document.addEventListener('DOMContentLoaded', ()=>{
+  buildTicker();
+  buildProducts();
+  buildMoods();
+  buildBQDots();
+  buildRefleksi();
+  buildHowSteps();
+  buildTesti();
+  buildFAQ();
+  buildAIChips();
+  renderEntries();
+  updateCartUI();
+  revealOnScroll();
+  setInterval(nextBQ, 7000);
+});
+
+// ─── TICKER ───
+function buildTicker(){
+  const items = ['✦ Gratis ongkir di atas Rp150.000','✦ QR update otomatis tiap minggu','✦ Garansi 14 hari','✦ Lebih dari 1.200 pembeli puas','✦ Made in Indonesia','✦ Scan QR untuk motivasi harian'];
+  const inner = document.getElementById('tickerInner');
+  const full = [...items,...items].map(t=>`<span>${t}</span>`).join('');
+  inner.innerHTML = full;
+}
+
+// ─── PRODUCTS ───
+function buildProducts(filter){
+  filter = filter || productFilter;
+  const grid = document.getElementById('productGrid');
+  const filtered = filter==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.category===filter);
+  grid.innerHTML = '';
+  filtered.forEach(p=>{
+    const activeColor = activeColors[p.id] || p.color;
+    const activeBg = getProductBg(p, activeColor);
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.dataset.cat = p.category;
+    const starsHtml = '★'.repeat(p.stars)+'☆'.repeat(5-p.stars);
+    const badgeHtml = p.badge ? `<div class="product-badge badge-${p.badge}">${{new:'Baru',hot:'Terlaris',ltd:'Limited',sold:'Habis'}[p.badge]}</div>` : '';
+    const colorsHtml = p.colors.map((c,i)=>`<div class="pcolor${i===0?' active':''}" style="background:${c}" onclick="setProductColor(${p.id},'${c}',this)" title="${c}"></div>`).join('');
+    card.innerHTML = `
+      ${badgeHtml}
+      <div class="product-img" style="background:${activeBg}" id="pimg${p.id}">
+        <div style="font-size:4rem">${p.emoji}</div>
+        <div style="position:absolute;bottom:12px;right:12px;width:36px;height:36px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;color:${activeColor}">QR</div>
+      </div>
+      <div class="product-info">
+        <div class="product-stars">${starsHtml} <span style="color:var(--muted);font-size:0.72rem">(${p.reviews})</span></div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-variant">${p.variant}</div>
+        <div class="product-colors" id="pcolors${p.id}">${colorsHtml}</div>
+        <div class="product-footer">
+          <div>
+            ${p.oldPrice?`<span class="product-price-old">Rp${p.oldPrice.toLocaleString('id')}</span>`:''}
+            <span class="product-price">Rp${p.price.toLocaleString('id')}</span>
+          </div>
+          <button class="product-add" onclick="addToCart(${p.id})" title="Tambah ke keranjang">+</button>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function getProductBg(p, color){
+  const map = {'#c06840':'#faeee5','#4a3fa8':'#eeedfc','#2d6e50':'#e3f3eb','#a83055':'#fbe8ef','#2c2c2a':'#e8e6e0','#8f7d5e':'#f5f0e6','#9a3d1a':'#f5e8e0','#6e3d7a':'#f0e8f5','#e8956e':'#fef3ed','#7068d4':'#f0effe','#4a9e76':'#e8f6ef','#d4607e':'#fceef3','#5c5c58':'#eeeeec','#b5a07c':'#faf5ec','#c45e2a':'#faeae0','#9e6aae':'#f5eefa','#f5d5c0':'#fff7f3','#b8b4f0':'#f5f4ff','#a8d9c0':'#eef8f3','#f0b0c8':'#fef2f6','#a0a098':'#f2f2f0','#ddd0b8':'#fdfaf4','#e8a878':'#fef6ee','#d0b0e0':'#f9f0fd'};
+  return map[color] || p.bg;
+}
+
+function setProductColor(pid, color, el){
+  activeColors[pid] = color;
+  const prod = PRODUCTS.find(p=>p.id===pid);
+  const img = document.getElementById('pimg'+pid);
+  if(img) img.style.background = getProductBg(prod, color);
+  const colors = document.getElementById('pcolors'+pid);
+  if(colors) colors.querySelectorAll('.pcolor').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function filterProduct(cat, btn){
+  productFilter = cat;
+  document.querySelectorAll('.mood-tabs .mood-tab, .nav-links .mood-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  buildProducts(cat);
+}
+
+function addToCart(id){
+  const prod = PRODUCTS.find(p=>p.id===id);
+  if(!prod) return;
+  const existing = cart.find(i=>i.id===id);
+  if(existing) existing.qty++;
+  else cart.push({...prod, qty:1});
+  localStorage.setItem('mc_cart', JSON.stringify(cart));
+  updateCartUI();
+  showToast(`${prod.emoji} ${prod.name} ditambahkan ke keranjang`);
+}
+
+function removeFromCart(id){
+  cart = cart.filter(i=>i.id!==id);
+  localStorage.setItem('mc_cart', JSON.stringify(cart));
+  updateCartUI();
+  renderCart();
+}
+
+function changeQty(id, delta){
+  const item = cart.find(i=>i.id===id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0) removeFromCart(id);
+  else {
+    localStorage.setItem('mc_cart', JSON.stringify(cart));
+    updateCartUI();
+    renderCart();
+  }
+}
+
+function updateCartUI(){
+  const total = cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cartCount').textContent = total;
+}
+
+function toggleCart(){
+  const sidebar = document.getElementById('cartSidebar');
+  const overlay = document.getElementById('cartOverlay');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('on');
+  if(sidebar.classList.contains('open')) renderCart();
+}
+
+function renderCart(){
+  const body = document.getElementById('cartBody');
+  const footer = document.getElementById('cartFooter');
+  if(!cart.length){
+    body.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛍</div><p>Keranjangmu masih kosong.</p><p style="font-size:0.78rem;margin-top:0.5rem;color:var(--muted)">Yuk pilih koleksi Mood Carry!</p></div>`;
+    footer.style.display='none';
+    return;
+  }
+  body.innerHTML = '';
+  cart.forEach(item=>{
+    const div = document.createElement('div');
+    div.className='cart-item';
+    div.innerHTML=`<div class="cart-item-img" style="background:${item.bg}">${item.emoji}</div>
+    <div class="cart-item-info">
+      <div class="cart-item-name">${item.name}</div>
+      <div class="cart-item-var">${item.variant}</div>
+      <div class="cart-qty">
+        <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+        <span class="qty-num">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+        <button onclick="removeFromCart(${item.id})" style="background:none;border:none;color:var(--muted);font-size:0.75rem;margin-left:8px;cursor:pointer;">Hapus</button>
+      </div>
+    </div>
+    <div class="cart-item-price">Rp${(item.price*item.qty).toLocaleString('id')}</div>`;
+    body.appendChild(div);
+  });
+  const total = cart.reduce((s,i)=>s+(i.price*i.qty),0);
+  document.getElementById('cartTotal').textContent = 'Rp'+total.toLocaleString('id');
+  footer.style.display='block';
+}
+
+function checkout(){
+  showToast('🎉 Fitur checkout segera hadir!');
+  toggleCart();
+}
+
+// ─── MOODS ───
+function buildMoods(){
+  const tabs = document.getElementById('moodTabs');
+  const content = document.getElementById('moodContent');
+  MOODS.forEach((m,i)=>{
+    const tab = document.createElement('button');
+    tab.className = 'mood-tab'+(i===0?' active':'');
+    tab.textContent = m.label;
+    tab.onclick = ()=>switchMood(m.id);
+    tabs.appendChild(tab);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'tab-content'+(i===0?' show':'');
+    wrap.id = 'mood_'+m.id;
+    const grid = document.createElement('div');
+    grid.className = 'mood-cards-grid';
+    m.cards.forEach(c=>{
+      const card = document.createElement('div');
+      card.className = 'mood-card';
+      card.innerHTML = `<div class="mood-card-line" style="background:${m.line}"></div>
+        <div class="mood-icon-wrap" style="background:${m.bg}">${c.em}</div>
+        <span class="mood-chip" style="color:${m.line}">${c.tag}</span>
+        <p class="mood-q">"${c.q}"</p>
+        <p class="mood-sub">${c.sub}</p>
+        <span class="mood-go">↗</span>`;
+      card.onclick = ()=>openModal(c.em, c.tag, c.q, m.line);
+      grid.appendChild(card);
+    });
+    wrap.appendChild(grid);
+    content.appendChild(wrap);
+  });
+}
+
+function switchMood(id){
+  MOODS.forEach(m=>{
+    const el = document.getElementById('mood_'+m.id);
+    if(el) el.classList.remove('show');
+  });
+  const el = document.getElementById('mood_'+id);
+  if(el) el.classList.add('show');
+  document.querySelectorAll('#moodTabs .mood-tab').forEach((t,i)=>{
+    t.classList.toggle('active', MOODS[i].id===id);
+  });
+  currentMoodTab = id;
+}
+
+// ─── BIG QUOTE ───
+function buildBQDots(){
+  const dots = document.getElementById('bqDots');
+  BIG_QUOTES.forEach((_,i)=>{
+    const d = document.createElement('div');
+    d.className='bq-dot'+(i===0?' on':'');
+    d.onclick=()=>setBQ(i);
+    dots.appendChild(d);
+  });
+}
+function setBQ(i){
+  bqIdx=i;
+  const q=document.getElementById('bq-quote');
+  const a=document.getElementById('bq-auth');
+  q.style.opacity=0;
+  setTimeout(()=>{q.textContent=BIG_QUOTES[i].q;a.textContent=BIG_QUOTES[i].a;q.style.opacity=1;},450);
+  document.querySelectorAll('.bq-dot').forEach((d,j)=>d.classList.toggle('on',j===i));
+}
+function nextBQ(){setBQ((bqIdx+1)%BIG_QUOTES.length)}
+function prevBQ(){setBQ((bqIdx-1+BIG_QUOTES.length)%BIG_QUOTES.length)}
+
+// ─── AI STATE ───
+const AI_CHIPS = [
+  'Aku merasa lelah hari ini 😮‍💨',
+  'Aku butuh semangat ⚡',
+  'Aku baru gagal, sedih',
+  'Carikan berita positif terbaru',
+  'Aku mau mulai lagi 🌱',
+  'Aku merasa kesepian ☁️',
+];
+
+let aiLoading = false;
+let chatHistory = [];
+let currentModel = 'gpt'; // 'gpt' | 'claude'
+let gptApiKey = localStorage.getItem('mc_gpt_key') || '';
+
+const AI_SYSTEM = `Kamu adalah AI teman hangat dari Mood Carry, brand gantungan kunci/totebag motivasi dari Indonesia.
+
+Kepribadianmu:
+- Hangat, empatik, seperti sahabat terbaik
+- Berbicara dalam Bahasa Indonesia yang natural, tidak kaku
+- Singkat tapi bermakna — tidak bertele-tele
+- Selalu hadir dan tidak menghakimi
+
+Tugasmu:
+1. Dengarkan apa yang dirasakan pengguna
+2. Berikan respons yang bermakna dan personal (2-4 paragraf pendek)
+3. Jika pengguna minta info terkini, carikan lalu kaitkan dengan motivasi
+4. Selalu akhiri dengan satu kutipan motivasi singkat yang relevan dalam tanda kutip
+
+Jangan gunakan header atau bullet kecuali diminta. Max 180 kata.`;
+
+// ─── AI INIT ───
+function buildAIChips(){
+  const c = document.getElementById('aiChips');
+  AI_CHIPS.forEach(ch=>{
+    const btn=document.createElement('button');
+    btn.className='qchip';
+    btn.textContent=ch;
+    btn.onclick=()=>{document.getElementById('aiInput').value=ch.replace(/[😮‍💨⚡🌱☁️]/gu,'').trim();sendMsg();};
+    c.appendChild(btn);
+  });
+  updateModelUI();
+}
+
+function autoResize(ta){
+  ta.style.height='auto';
+  ta.style.height=Math.min(ta.scrollHeight,120)+'px';
+}
+
+// ─── MODEL SWITCH ───
+function switchModel(model){
+  currentModel = model;
+  chatHistory = []; // reset history on model switch
+  updateModelUI();
+  // clear messages except first
+  const msgs = document.getElementById('aiMessages');
+  msgs.innerHTML = '';
+  const modelName = model === 'gpt' ? 'ChatGPT (GPT-4o)' : 'Claude AI';
+  const modelEmoji = model === 'gpt' ? '🤖' : '💛';
+  addBotMsg(`Model diganti ke **${modelName}** ${modelEmoji}\nCeritakan apa yang kamu rasakan hari ini!`);
+}
+
+function updateModelUI(){
+  const isGPT = currentModel === 'gpt';
+  const hasGPTKey = !!localStorage.getItem('mc_gpt_key');
+
+  document.getElementById('btnGPT').classList.toggle('active', isGPT);
+  document.getElementById('btnClaude').classList.toggle('active', !isGPT);
+
+  document.getElementById('aiAvatar').textContent = isGPT ? '🤖' : '💛';
+  document.getElementById('aiName').textContent = isGPT ? 'ChatGPT' : 'Claude AI';
+
+  const badge = document.getElementById('aiBadgeWeb');
+  badge.className = 'ai-badge ' + (isGPT ? 'gpt' : 'claude');
+  badge.textContent = isGPT ? '🤖 GPT-4o + Web' : '✦ Claude + Web';
+
+  // Show/hide setup banner
+  const banner = document.getElementById('setupBanner');
+  banner.classList.toggle('hidden', !isGPT || hasGPTKey);
+
+  const statusEl = document.getElementById('aiStatus');
+  statusEl.textContent = isGPT
+    ? (hasGPTKey ? 'ChatGPT aktif' : 'Perlu API key')
+    : 'Claude aktif';
+  statusEl.style.color = (!isGPT || hasGPTKey) ? 'var(--sage)' : 'var(--clay)';
+}
+
+// ─── SEND MESSAGE ───
+function addBotMsg(text, model){
+  const msgs = document.getElementById('aiMessages');
+  const wrapper = document.createElement('div');
+  wrapper.className = 'msg bot';
+  const t = new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+  const mTag = model ? `<span class="msg-model-tag ${model}">${model==='gpt'?'ChatGPT':'Claude'}</span>` : '';
+  wrapper.innerHTML = `<div class="msg-bubble">${text.replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>')}</div><div class="msg-meta">${t}${mTag}</div>`;
+  msgs.appendChild(wrapper);
+  msgs.scrollTop = msgs.scrollHeight;
+  return wrapper;
+}
+
+async function sendMsg(){
+  if(aiLoading) return;
+
+  // Check GPT key if using GPT
+  if(currentModel === 'gpt' && !localStorage.getItem('mc_gpt_key')){
+    openSettings();
+    showToast('Masukkan API key OpenAI terlebih dahulu 🔑');
+    return;
+  }
+
+  const input = document.getElementById('aiInput');
+  const text = input.value.trim();
+  if(!text) return;
+
+  input.value='';
+  input.style.height='auto';
+
+  // Add user message
+  const msgs = document.getElementById('aiMessages');
+  const uWrapper = document.createElement('div');
+  uWrapper.className = 'msg user';
+  const ut = new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+  uWrapper.innerHTML = `<div class="msg-bubble">${text}</div><div class="msg-meta">${ut}</div>`;
+  msgs.appendChild(uWrapper);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  chatHistory.push({role:'user', content: text});
+  aiLoading = true;
+  document.getElementById('sendBtn').disabled = true;
+
+  const typing = document.getElementById('typingIndicator');
+  const statusBar = document.getElementById('aiStatusBar');
+  const statusText = document.getElementById('aiStatusText');
+
+  typing.classList.add('show');
+  msgs.scrollTop = 9999;
+
+  try {
+    let fullText = '';
+
+    if(currentModel === 'gpt'){
+      fullText = await sendToGPT(text, statusBar, statusText);
+    } else {
+      fullText = await sendToClaude(text, statusBar, statusText);
+    }
+
+    typing.classList.remove('show');
+    statusBar.classList.remove('show');
+
+    if(!fullText) fullText = 'Maaf, ada gangguan. Coba lagi sebentar ya 💛';
+    chatHistory.push({role:'assistant', content: fullText});
+
+    // Typewriter effect
+    const wrapper = document.createElement('div');
+    wrapper.className = 'msg bot';
+    const bubble = document.createElement('div');
+    bubble.className = 'msg-bubble';
+    const meta = document.createElement('div');
+    meta.className = 'msg-meta';
+    const t2 = new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+    const mTag = `<span class="msg-model-tag ${currentModel}">${currentModel==='gpt'?'ChatGPT':'Claude'}</span>`;
+    meta.innerHTML = t2 + mTag;
+    wrapper.appendChild(bubble);
+    wrapper.appendChild(meta);
+    msgs.appendChild(wrapper);
+
+    let i=0;
+    const iv = setInterval(()=>{
+      if(i < fullText.length){
+        bubble.innerHTML = fullText.slice(0,++i).replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
+        msgs.scrollTop = msgs.scrollHeight;
+      } else {
+        clearInterval(iv);
+        aiLoading=false;
+        document.getElementById('sendBtn').disabled=false;
+      }
+    }, 15);
+
+  } catch(err){
+    typing.classList.remove('show');
+    statusBar.classList.remove('show');
+    const errMsg = err.message || 'Terjadi kesalahan koneksi.';
+    addBotMsg(`⚠️ ${errMsg}\n\nCoba lagi ya 💛`);
+    aiLoading=false;
+    document.getElementById('sendBtn').disabled=false;
+    chatHistory.pop();
+  }
+}
+
+// ─── GPT PROVIDER ───
+async function sendToGPT(text, statusBar, statusText){
+  const apiKey = localStorage.getItem('mc_gpt_key');
+  if(!apiKey) throw new Error('API key OpenAI belum dimasukkan.');
+
+  const needsSearch = /terbaru|hari ini|2024|2025|berita|trending|sekarang|carikan|search|info|update/i.test(text);
+  if(needsSearch){
+    statusBar.className='ai-status-bar show searching';
+    statusText.textContent='ChatGPT sedang mencari di internet...';
+  } else {
+    statusBar.className='ai-status-bar show thinking';
+    statusText.textContent='ChatGPT sedang berpikir...';
+  }
+
+  const messages = [
+    {role:'system', content: AI_SYSTEM},
+    ...chatHistory
+  ];
+
+  const body = {
+    model: 'gpt-4o-mini',
+    messages,
+    max_tokens: 600,
+    temperature: 0.85,
+  };
+
+  // Add web search tools if relevant
+  if(needsSearch){
+    body.tools = [{
+      type: 'function',
+      function: {
+        name: 'search_web',
+        description: 'Search the internet for current information',
+        parameters: {
+          type: 'object',
+          properties: { query: { type: 'string' } },
+          required: ['query']
+        }
+      }
+    }];
+    body.tool_choice = 'auto';
+  }
+
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify(body)
+  });
+
+  if(!res.ok){
+    const err = await res.json().catch(()=>({}));
+    if(res.status === 401) throw new Error('API key tidak valid. Periksa kembali di pengaturan.');
+    if(res.status === 429) throw new Error('Limit API tercapai. Tunggu sebentar atau upgrade plan OpenAI kamu.');
+    if(res.status === 400) throw new Error('Permintaan tidak valid: ' + (err.error?.message||''));
+    throw new Error('Error dari OpenAI: ' + (err.error?.message || res.status));
+  }
+
+  const data = await res.json();
+  statusBar.classList.remove('show');
+
+  const choice = data.choices?.[0];
+  if(!choice) throw new Error('Tidak ada respons dari ChatGPT.');
+
+  // Handle tool calls (web search)
+  if(choice.finish_reason === 'tool_calls' && choice.message?.tool_calls){
+    statusBar.className='ai-status-bar show searching';
+    statusText.textContent='ChatGPT sedang browsing internet...';
+    // For simplicity, do a follow-up without tools to get the actual response
+    // (real web search requires server-side implementation)
+    const followUp = await fetch('https://api.openai.com/v1/chat/completions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`},
+      body: JSON.stringify({
+        model:'gpt-4o-mini',
+        messages:[
+          {role:'system', content: AI_SYSTEM + '\n\nCatatan: Pengguna meminta info terbaru. Berikan respons motivasi terbaik berdasarkan pengetahuanmu, dan sampaikan bahwa kamu memberikan perspektif umum.'},
+          ...chatHistory
+        ],
+        max_tokens:600,
+        temperature:0.85
+      })
+    });
+    const d2 = await followUp.json();
+    return d2.choices?.[0]?.message?.content || '';
+  }
+
+  return choice.message?.content || '';
+}
+
+// ─── CLAUDE PROVIDER ───
+async function sendToClaude(text, statusBar, statusText){
+  const needsSearch = /terbaru|hari ini|2024|2025|berita|trending|sekarang|carikan|search|info|update/i.test(text);
+  if(needsSearch){
+    statusBar.className='ai-status-bar show searching';
+    statusText.textContent='Claude sedang mencari di internet...';
+  } else {
+    statusBar.className='ai-status-bar show thinking';
+    statusText.textContent='Claude sedang berpikir...';
+  }
+
+  const res = await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      model:'claude-sonnet-4-6',
+      max_tokens:1000,
+      system: AI_SYSTEM,
+      messages: chatHistory,
+      tools:[{type:'web_search_20250305',name:'web_search'}]
+    })
+  });
+
+  if(!res.ok){
+    const err = await res.json().catch(()=>({}));
+    throw new Error('Error dari Claude: ' + (err.error?.message || res.status));
+  }
+
+  const data = await res.json();
+  statusBar.classList.remove('show');
+
+  const usedSearch = data.content?.some(b=>b.type==='tool_use'&&b.name==='web_search');
+  if(usedSearch){
+    statusBar.className='ai-status-bar show searching';
+    statusText.textContent='Claude memproses hasil pencarian...';
+    await new Promise(r=>setTimeout(r,1200));
+    statusBar.classList.remove('show');
+  }
+
+  return (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('') || '';
+}
+
+// ─── SETTINGS MODAL ───
+let settingsTab = 'gpt';
+
+function openSettings(){
+  document.getElementById('settingsOverlay').classList.add('on');
+  refreshSettingsUI();
+}
+function closeSettings(){
+  document.getElementById('settingsOverlay').classList.remove('on');
+}
+function switchSettingsTab(tab){
+  settingsTab = tab;
+  document.getElementById('smTabGPT').classList.toggle('active', tab==='gpt');
+  document.getElementById('smTabClaude').classList.toggle('active', tab==='claude');
+  document.getElementById('paneGPT').classList.toggle('on', tab==='gpt');
+  document.getElementById('paneClaude').classList.toggle('on', tab==='claude');
+}
+function refreshSettingsUI(){
+  const key = localStorage.getItem('mc_gpt_key');
+  const banner = document.getElementById('gptSavedBanner');
+  const inp = document.getElementById('gptKeyInput');
+  if(key){
+    banner.style.display='flex';
+    inp.placeholder='sk-proj-••••••••••••••••••••••••••••';
+    inp.value='';
+  } else {
+    banner.style.display='none';
+    inp.placeholder='sk-proj-...';
+  }
+}
+function saveGPTKey(){
+  const val = document.getElementById('gptKeyInput').value.trim();
+  if(!val){ showToast('Masukkan API key dulu ya'); return; }
+  if(!val.startsWith('sk-')){ showToast('Format API key tidak valid. Harus diawali sk-'); return; }
+  localStorage.setItem('mc_gpt_key', val);
+  gptApiKey = val;
+  refreshSettingsUI();
+  updateModelUI();
+  switchModel('gpt');
+  closeSettings();
+  showToast('✓ API key ChatGPT tersimpan! Kamu siap menggunakan ChatGPT.');
+}
+function clearGPTKey(){
+  localStorage.removeItem('mc_gpt_key');
+  gptApiKey = '';
+  document.getElementById('gptKeyInput').value='';
+  refreshSettingsUI();
+  updateModelUI();
+  showToast('API key dihapus');
+}
+
+// ─── REFLEKSI ───
+function buildRefleksi(){
+  const g=document.getElementById('refleksiGrid');
+  REFLEKSI.forEach(r=>{
+    const c=document.createElement('div');
+    c.className='r-card';
+    c.innerHTML=`<div class="r-num">${r.n}</div><p class="r-q">"${r.q}"</p><p class="r-hint">${r.h}</p>`;
+    c.onclick=()=>showToast('"'+r.q+'"');
+    g.appendChild(c);
+  });
+}
+
+// ─── HOW ───
+function buildHowSteps(){
+  const g=document.getElementById('howSteps');
+  HOW_STEPS.forEach(s=>{
+    const el=document.createElement('div');
+    el.className='how-step';
+    el.innerHTML=`<div class="step-circle">${s.em}<div class="step-num">${s.n}</div></div><div class="step-title">${s.t}</div><p class="step-desc">${s.d}</p>`;
+    g.appendChild(el);
+  });
+}
+
+// ─── TESTI ───
+function buildTesti(){
+  const g=document.getElementById('testiWrap');
+  TESTI.forEach(t=>{
+    const c=document.createElement('div');
+    c.className='testi-card'+(t.featured?' testi-featured':'');
+    c.innerHTML=`<div class="testi-stars">${'★'.repeat(t.stars)}</div>
+      <p class="testi-text">"${t.text}"</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:${t.avbg};color:${t.avc}">${t.av}</div>
+        <div><div class="testi-name">${t.name}</div><div class="testi-loc">${t.loc}</div></div>
+      </div>`;
+    g.appendChild(c);
+  });
+}
+
+// ─── FAQ ───
+function buildFAQ(){
+  const list=document.getElementById('faqList');
+  FAQ.forEach(f=>{
+    const item=document.createElement('div');
+    item.className='faq-item';
+    item.innerHTML=`<button class="faq-q" onclick="toggleFAQ(this)">${f.q}<span class="faq-icon">+</span></button><div class="faq-a">${f.a}</div>`;
+    list.appendChild(item);
+  });
+}
+function toggleFAQ(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+// ─── JOURNAL ───
+function selJMood(btn){
+  document.querySelectorAll('.m-emoji').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  selMood=btn.dataset.m;
+}
+function updateCharCount(ta){
+  document.getElementById('charCount').textContent=ta.value.length+' / 500';
+}
+function saveEntry(){
+  const text=document.getElementById('jText').value.trim();
+  if(!text){showToast('Tulis dulu perasaanmu ya 💛');return;}
+  const entry={id:Date.now(),emoji:selMood,text,date:new Date().toLocaleDateString('id-ID',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})};
+  entries.unshift(entry);
+  if(entries.length>20) entries.pop();
+  localStorage.setItem('mc_entries',JSON.stringify(entries));
+  document.getElementById('jText').value='';
+  document.getElementById('charCount').textContent='0 / 500';
+  renderEntries();
+  showToast('Catatan tersimpan ✓');
+}
+function renderEntries(){
+  const list=document.getElementById('entriesList');
+  if(!entries.length){
+    list.innerHTML='<div class="no-entries"><div style="font-size:2rem;margin-bottom:0.75rem">📖</div>Belum ada catatan.<br>Mulai tulis yang pertama!</div>';
+    return;
+  }
+  list.innerHTML='';
+  entries.slice(0,6).forEach(e=>{
+    const c=document.createElement('div');
+    c.className='entry-card';
+    c.innerHTML=`<div class="e-top"><div class="e-left"><span class="e-emoji">${e.emoji}</span><span class="e-date">${e.date}</span></div><button class="e-del" onclick="deleteEntry(${e.id})">✕</button></div><div class="e-text">${e.text}</div>`;
+    list.appendChild(c);
+  });
+}
+function deleteEntry(id){
+  entries=entries.filter(e=>e.id!==id);
+  localStorage.setItem('mc_entries',JSON.stringify(entries));
+  renderEntries();
+}
+function clearEntries(){
+  if(!entries.length) return;
+  entries=[];
+  localStorage.removeItem('mc_entries');
+  renderEntries();
+  showToast('Semua catatan dihapus');
+}
+
+// ─── NEWSLETTER ───
+function subscribeNews(){
+  const email=document.getElementById('newsEmail').value.trim();
+  if(!email||!email.includes('@')){showToast('Masukkan email yang valid ya');return;}
+  showToast('🎉 Terima kasih! Kamu sudah terdaftar.');
+  document.getElementById('newsEmail').value='';
+}
+
+// ─── MODAL ───
+let currentQuote='';
+function openModal(em,chip,q,color){
+  currentQuote=q;
+  document.getElementById('mEm').textContent=em;
+  document.getElementById('mChip').textContent=chip;
+  document.getElementById('mChip').style.color=color;
+  document.getElementById('mQ').textContent='"'+q+'"';
+  document.getElementById('modalOverlay').classList.add('on');
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('on')}
+function copyQuote(){
+  navigator.clipboard.writeText('"'+currentQuote+'" — Mood Carry').then(()=>showToast('Kutipan disalin ✓')).catch(()=>showToast('Gagal menyalin'));
+}
+function shareWA(){
+  const url='https://wa.me/?text='+encodeURIComponent('"'+currentQuote+'" — Mood Carry\n\nTemukan lebih banyak motivasi di: https://moodcarry.com');
+  window.open(url,'_blank');
+}
+
+// ─── MOBILE MENU ───
+function toggleMobile(){document.getElementById('mobileMenu').classList.toggle('open')}
+
+// ─── UTILS ───
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+function revealOnScroll(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+  },{threshold:0.12});
+  document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
+}
+
+function scrollTo(sel){
+  document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
